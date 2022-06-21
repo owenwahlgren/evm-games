@@ -100,3 +100,45 @@
     flex-direction: column;
   }
 }
+
+
+.scrollingbox {
+  display: inline-flex;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.scrollingbox ul {
+  margin: 0 0.625rem;
+  padding: 0;
+  -webkit-animation: scrollUp 3.5s ease-in-out infinite normal;
+  animation: scrollUp 3.5s ease-in-out infinite normal;
+}
+
+.scrollingbox ul li {
+  display: flex;
+  list-style: none; 
+}
+
+
+@-webkit-keyframes scrollUp {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-333%);
+            transform: translateY(-333%);
+  }
+}
+
+@keyframes scrollUp {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-333%);
+            transform: translateY(-333%);
+  }
+}
