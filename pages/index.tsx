@@ -1,13 +1,12 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ReactSmartScroller } from 'react-smart-scroller'
+import Navbar from '../src/components/Navbar'
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
+
 const Home: NextPage = () => {
-  const domains = ['games', 'gg'];
-
-
   return (
     <div className={styles.container}>
       <Head>
@@ -18,6 +17,7 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar/>
       <main className={styles.main}>
         <div className={styles.title}>
         evm.
@@ -31,12 +31,11 @@ const Home: NextPage = () => {
           </ul>
          </div>
         </div>
-        <ConnectButton />
       </main>
 
       <footer className={styles.footer}>
         <a href="https://rainbow.me" target="_blank" rel="noopener noreferrer">
-          Made with ❤️ by your frens at 🌈
+          Made by owen.eth
         </a>
       </footer>
     </div>
