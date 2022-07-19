@@ -6,6 +6,7 @@ import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Navbar from '../src/components/Navbar'
+import Head from 'next/head';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -43,6 +44,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
+        <Head>
+          <title>evm.games</title>
+          <meta
+            name="description"
+            content="P2P Smart Contract games on EVM blockchains"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <Navbar/>
         <Component {...pageProps} />
       </RainbowKitProvider>
