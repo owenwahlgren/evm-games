@@ -18,12 +18,6 @@ const Home: NextPage = () => {
          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a href="https://rainbow.me" target="_blank" rel="noopener noreferrer">
-          Made by owen.eth
-        </a>
-      </footer>
     </div>
   );
 };
