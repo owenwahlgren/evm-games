@@ -6,18 +6,19 @@ export default function Navbar() {
             <div className={styles.navlinks}>
                 <ul>
                     <li className={styles.navitem}>
-                        <a>Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li className={styles.navitem}>
-                        <a>Games</a>
+                        <a>Play</a>
                         <ul>
-                            <li><a href="#">Coin flip</a></li>
-                            <li><a href="#">Blackjack</a></li>
-                            <li><a href="#">Connect-four</a></li>
+                            <li><a href="/jackpot">Jackpot</a></li>
+                            <li><a href="/coinflip">Coinflip</a></li>
+                            <li><a href="/blackjack">Blackjack</a></li>
+                            <li><a href="/connectfour">Connect-four</a></li>
                         </ul>
                     </li>
                     <li className={styles.navitem}>
-                        <a>Account</a>
+                        <a href="/stats">Stats</a>
                     </li>
                 </ul>
             </div>

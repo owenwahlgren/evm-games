@@ -1,10 +1,6 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { ReactSmartScroller } from 'react-smart-scroller'
-import Navbar from '../src/components/Navbar'
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +13,6 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar/>
       <main className={styles.main}>
         <div className={styles.title}>
         evm.
