@@ -170,6 +170,7 @@
 
 .jackpotcontainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12em;
@@ -215,8 +216,28 @@
 }
 
 .jackpotrecent {
-  
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  margin-top: 3em;
 }
+
+.jackpotrecent tr {
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em;
+}
+.jackpotrecent tr td {
+  padding: 1em;
+}
+
+.jackpotrecentheader {
+    background-color: #FAFBFC;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+
+
 
 
 @-webkit-keyframes scrollUp {

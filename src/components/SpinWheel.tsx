@@ -56,27 +56,27 @@ export const SpinWheel = (props) => {
                 <span>{minutes}</span>:<span>{seconds}s</span>
             </div>
              <>
-            <Wheel
-            radiusLineWidth={1}
-            outerBorderWidth={0}
-            mustStartSpinning={mustSpin}
-            prizeNumber={0} //this sets the winner of the spin
-            fontSize={16}
-            data={data}
-            radiusLineColor={"black"}
-            backgroundColors={['#666699', '#3385ff', '#66ff99', '#ff5c33']}
-            textColors={['#ffffff']}
-            onStopSpinning={undefined} //when spin is complete check winner and prompt for claim
-            />
-        </>
-        <div>
-            <input
-                type="text"
-                placeholder={props.chainInfo.activeChain?.nativeCurrency?.symbol}
-                onChange={handleChange}
-            />
-            <button onClick={deposit}>Deposit</button>
-        </div>
+                <Wheel
+                radiusLineWidth={1}
+                outerBorderWidth={0}
+                mustStartSpinning={mustSpin}
+                prizeNumber={0} //this sets the winner of the spin
+                fontSize={16}
+                data={data}
+                radiusLineColor={"black"}
+                backgroundColors={['#666699', '#3385ff', '#66ff99', '#ff5c33']}
+                textColors={['#ffffff']}
+                onStopSpinning={undefined} //when spin is complete check winner and prompt for claim
+                />
+            </>
+            <div>
+                <input
+                    type="text"
+                    placeholder={props.chainInfo.activeChain?.nativeCurrency?.symbol}
+                    onChange={handleChange}
+                />
+                <button onClick={deposit}>Deposit</button>
+            </div>
         </div>
     )
 }

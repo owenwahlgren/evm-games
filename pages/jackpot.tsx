@@ -5,6 +5,11 @@ const SpinWheel = dynamic(
     () => import('../src/components/SpinWheel').then(mod => mod.SpinWheel),
     { ssr: false }
 );
+
+const JackpotRecent = dynamic(
+    () => import('../src/components/JackpotRecent').then(mod => mod.JackpotRecent),
+    { ssr: false }
+);
 import styles from '../styles/Home.module.css';
 import {useAccount, useEnsName, useNetwork} from 'wagmi';
 
@@ -18,25 +23,9 @@ const Jackpot: NextPage = () => {
                 address={data?.address}
                 ens={useEnsName({address: data?.address})}
             />
-            {/* <div className={styles.jackpotrecent}>
-            <table>
-                <tr>
-                    <th>Company</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                </tr>
-                </table>
-            </div> */}
+            <div className={styles.jackpotrecent}>
+                <JackpotRecent chainInfo={useNetwork()}/>
+            </div>
         </div>
     )
 
