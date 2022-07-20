@@ -51,7 +51,7 @@ export const SpinWheel = (props) => {
 
     return (
         <div>
-            <h3>Jackpot Total: {prizeNumber} {props.chainInfo.activeChain?.nativeCurrency?.symbol}</h3>
+            <h3>{prizeNumber} {props.chainInfo.activeChain?.nativeCurrency?.symbol}</h3>
             <div style={{fontSize: "2em"}}>
                 <span>{minutes}</span>:<span>{seconds}s</span>
             </div>

@@ -183,10 +183,12 @@
 }
 
 .jackpotcontainer div h3 {
-  padding: 2em;
+  padding: 1em;
   text-align: center;
   align-items: center;
-  justify-content: center;
+  background-color: #FAFBFC;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
@@ -237,8 +239,18 @@
 }
 
 
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-
+.tvp {
+  margin-top: 3em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
 
 @-webkit-keyframes scrollUp {
   from {

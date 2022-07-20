@@ -17,6 +17,8 @@ const Home: NextPage = () => {
           </ul>
          </div>
         </div>
+        <p>no fee. no house</p>
+        <p>coming soon...</p>
       </main>
     </div>
   );
