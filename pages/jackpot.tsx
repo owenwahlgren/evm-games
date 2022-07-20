@@ -5,7 +5,6 @@ const SpinWheel = dynamic(
     () => import('../src/components/SpinWheel').then(mod => mod.SpinWheel),
     { ssr: false }
 );
-// import {SpinWheel} from '../src/components/SpinWheel';
 import styles from '../styles/Home.module.css';
 import {useAccount, useEnsName, useNetwork} from 'wagmi';
 

@@ -59,7 +59,6 @@
 .footer {
   display: flex;
   flex: 1;
-  padding: 2rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
@@ -67,9 +66,14 @@
 
 .footer a {
   display: flex;
+  padding: 2em;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  /* flex-grow: 2; */
+}
+
+.footer a i:hover {
+  color: #0d76fc;
 }
 
 .title a {
@@ -164,28 +168,52 @@
   list-style: none; 
 }
 
-
 .jackpotcontainer {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 12em;
-  margin: auto;
 }
 
 .jackpotcontainer div div {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin: auto; */
-  padding: 1em;
 }
 
-.jackpotcontainer div h2 {
+.jackpotcontainer div h3 {
+  padding: 2em;
   text-align: center;
   align-items: center;
   justify-content: center;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
+
+.jackpotcontainer input, .jackpotcontainer button {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
 
 @-webkit-keyframes scrollUp {
   from {
