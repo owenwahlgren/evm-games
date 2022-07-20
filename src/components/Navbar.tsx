@@ -11,10 +11,10 @@ export default function Navbar() {
                     <li className={styles.navitem}>
                         <a>Play</a>
                         <ul>
-                            <li><a href="/jackpot">Jackpot</a></li>
-                            <li><a href="/coinflip">Coinflip</a></li>
-                            <li><a href="/blackjack">Blackjack</a></li>
-                            <li><a href="/connectfour">Connect-four</a></li>
+                            <li><a href="/jackpot"><i class="bi bi-cash-stack"></i> Jackpot</a></li>
+                            <li><a href="/coinflip"><i class="bi bi-coin"></i> Coinflip</a></li>
+                            <li><a href="/blackjack"><i class="bi bi-suit-club-fill"></i> Blackjack</a></li>
+                            <li><a href="/connectfour"><i class="bi bi-4-square"></i> Connect Four</a></li>
                         </ul>
                     </li>
                     <li className={styles.navitem}>
