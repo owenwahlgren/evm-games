@@ -1,11 +1,28 @@
-# EVM.GAMES | EVM.GG
-Coming soon!
 
-This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](https://github.com/rainbow-me/rainbowkit/tree/main/packages/create-rainbowkit).
+## EVM.GAMES || EVM.GG
+This repository contains the front-end code for the open sauce wager protocol.
+Very much a work in progress (single man team), feel free to poke around!
+Contributions and feedback are much appreciated!
+
+**Notice**: This repository will eventually be merged into an organization alongside the repositories containing the protocol's smart contracts.
+# No fees. No house. Just games
+Wager on classic games such as jackpot, coinflip, blackjack, and connect-four via smart contracts. No games include a house edge or fee.
+
 
 ## Getting Started
-
-First, run the development server:
+First, clone the repository via ssh or https
+```bash
+git clone git@github.com:owenwahlgren/evm-games.git
+```
+or
+```bash
+git clone https://github.com/owenwahlgren/evm-games.git
+```
+Next, install the project's dependencies 
+```bash
+npm i --force
+```
+Finally, navigate into the cloned repository and run the development server:
 
 ```bash
 npm run dev
@@ -13,9 +30,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 ## Learn More
+
+This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](https://github.com/rainbow-me/rainbowkit/tree/main/packages/create-rainbowkit).
 
 To learn more about this stack, take a look at the following resources:
 
@@ -25,8 +43,3 @@ To learn more about this stack, take a look at the following resources:
 
 You can check out [the RainbowKit GitHub repository](https://github.com/rainbow-me/rainbowkit) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
