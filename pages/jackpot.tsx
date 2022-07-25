@@ -11,20 +11,36 @@ const JackpotRecent = dynamic(
     { ssr: false }
 );
 import styles from '../styles/Home.module.css';
-import {useAccount, useEnsName, useNetwork} from 'wagmi';
+import contracts from '../src/constants/contracts';
+import * as abi from '../src/constants/interfaces/Jackpot.json';
+import {useContract, useSigner, useAccount, useEnsName, useNetwork} from 'wagmi';
 
 
+
+//needs to be refactored
+//hooks should be done here and passed as props for more specific rendering
 const Jackpot: NextPage = () => {
+    const { data: signer, isError, isLoading } = useSigner()
+    const contract = useContract({
+        addressOrName: contracts[4].Jackpot, //this needs to be changed to current network
+        contractInterface: abi.result,
+        signerOrProvider: signer,
+    });
+
     const {data} = useAccount()
     return(
         <div className={styles.jackpotcontainer}>
             <SpinWheel 
                 chainInfo={useNetwork()}
                 address={data?.address}
-                ens={useEnsName({address: data?.address})}
+                ens={useEnsName({address: data?.address})} 
+                contract={contract}
             />
             <div className={styles.jackpotrecent}>
-                <JackpotRecent chainInfo={useNetwork()}/>
+                <JackpotRecent 
+                    chainInfo={useNetwork()}
+                    contract={contract}
+                    />
             </div>
         </div>
     )

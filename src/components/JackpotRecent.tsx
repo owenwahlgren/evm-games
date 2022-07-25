@@ -1,10 +1,30 @@
 import styles from '../../styles/Home.module.css';
+import { useEffect, useState } from 'react';
+import { Contract } from 'ethers';
 export const JackpotRecent = (props) => {
     const symbol = props.chainInfo.activeChain?.nativeCurrency?.symbol
-    const data = {};
-    const fetchData = () => {
 
-    };
+    const [players, setPlayers] = useState({})
+    const [totalTickets, setTotalTickets] = useState(0);
+    useEffect(() => {
+        async function fetchJackpotRecent(contract: Contract) {
+            let currPlayers = {};
+            const currTotalTickets = contract.totalTickets();
+            if (currTotalTickets > totalTickets) {setTotalTickets(currTotalTickets);}
+            for(let i = 0; i < totalTickets; i++) {
+                const address = await contract.jackpotTickets(i);
+                if (currPlayers[address] != undefined) {
+                    currPlayers[address] += 1;
+                } else {currPlayers[address] = 1;}
+            }
+
+            if (currPlayers != players) {setPlayers(currPlayers);}
+
+        }
+
+        fetchJackpotRecent(props.contract);
+    }, [props.contract, players, totalTickets])
+
 
     return (
         <table>
