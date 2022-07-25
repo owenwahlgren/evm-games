@@ -1,10 +1,10 @@
 
 ## EVM.GAMES || EVM.GG
-This repository contains the front-end code for the open sauce wager protocol.
+This repository contains the front-end code for evm.gg.
 Very much a work in progress (single man team), feel free to poke around!
 Contributions and feedback are much appreciated!
 
-**Notice**: This repository will eventually be merged into an organization alongside the repositories containing the protocol's smart contracts.
+**Notice**: This repository will eventually be merged into an organization alongside the repositories containing the [protocol's smart contracts](https://github.com/owenwahlgren/evm-games-contracts).
 # No fees. No house. Just games
 Wager on classic games such as jackpot, coinflip, blackjack, and connect-four via smart contracts. No games include a house edge or fee.
 
