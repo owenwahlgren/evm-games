@@ -22,7 +22,7 @@ import {useContract, useSigner, useAccount, useEnsName, useNetwork} from 'wagmi'
 const Jackpot: NextPage = () => {
     const { data: signer, isError, isLoading } = useSigner()
     const contract = useContract({
-        addressOrName: contracts[4].Jackpot, //this needs to be changed to current network
+        addressOrName: contracts[4].Jackpot, 
         contractInterface: abi.result,
         signerOrProvider: signer,
     });

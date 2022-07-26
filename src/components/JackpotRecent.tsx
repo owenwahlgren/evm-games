@@ -22,7 +22,7 @@ export const JackpotRecent = (props) => {
 
         }
 
-        fetchJackpotRecent(props.contract);
+        // fetchJackpotRecent(props.contract);
     }, [props.contract, players, totalTickets])
 
 

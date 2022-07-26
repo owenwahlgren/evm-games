@@ -1,59 +1,70 @@
 /*
     Make Wheel recognize client window with dynamic rendering 
 */
-import dynamic from "next/dynamic";
-const Wheel = dynamic(
-    () => import('react-custom-roulette').then(mod => mod.Wheel),
-    { ssr: false }
-);
+// import dynamic from "next/dynamic";
+// const Wheel = dynamic(
+//     () => import('react-custom-roulette').then(mod => mod.Wheel),
+//     { ssr: false }
+// );
+import { Wheel } from "react-custom-roulette";
 import { useState, useEffect } from "react";
 import { useTimer } from 'react-timer-hook';
-import { Contract } from "ethers";
+import { BigNumber, Contract } from "ethers";
 import { useEnsName } from 'wagmi'
 import { utils } from "ethers";
+import { parse } from "node:path/win32";
 
 
 export const SpinWheel = (props) => {
-   
     const [waitingSpin, setWaitingSpin] = useState(false);
     const [time, setTime] = useState(new Date())
-    const [prizeNumber, setPrizeNumber] = useState(0.0);
     const [gameId, setGameId] = useState(0);
-    const [jackpotData, setData] = useState([{option: undefined, style: {textColor: "#666699"}}])
+    const [gameInfo, setGameInfo] = useState({
+        amount: BigNumber,
+        timeBegin: BigNumber,
+        timeEnd: BigNumber,
+        active: Boolean,
+        winner: String
+    })
+    const [jackpotData, setData] = useState([{option: undefined}])
 
     useEffect((): void => {
-        if (!props.contract) {
-            return;
+        async function fetchId(contract: Contract): Promise<void> {
+            const id = parseInt(await contract.currGameId());
+            if (gameId != id) { setGameId(id)}
         }
-        async function fetchJackpot(contract: Contract) {
-            // try {
-                const id = await contract.currGameId();
-                if(gameId != id) {setGameId(parseInt(id));}
+        if (!props.contract.provider) { return; }
+        fetchId(props.contract);
+    }, [props.contract, gameId]);
 
-                const gameInfo = await contract.history(id);
-                const newTime = new Date(gameInfo.timeEnd * 1000);
-                if(newTime <= new Date(Date.now())) {setWaitingSpin(true)}
-                if (time != newTime) {setTime(newTime);}
-                
-
-                const newAmount = parseFloat(gameInfo.amount) / 10e17;
-                if (prizeNumber != newAmount) { setPrizeNumber(newAmount);}
-   
-                let players = []
-                let ticketCount = parseInt(await contract.totalTickets());
-                for (let i = 0; i < ticketCount; i++ ) {
-                    const address = await contract.jackpotTickets(i);
-                    // const ensData = useEnsName({address: player})
-                    players.push({option: address.substring(0, 9)});
-                }
-                if (players.length > 0) {
-                    setData(players);
-                }
-            // }
-            // catch(error){}
+    useEffect((): void => {
+        async function fetchGameInfo(contract: Contract): Promise<void> {
+            const currInfo = await contract.history(gameId);
+            if(gameInfo.timeEnd != currInfo.timeEnd) {
+                const newTime = new Date(currInfo.timeEnd * 1000);
+                if (newTime <= new Date(Date.now())) {setWaitingSpin(true)}
+                setTime(new Date(currInfo.timeEnd * 1000));
+                setGameInfo(currInfo);
+            }
+            
         }
-        fetchJackpot(props.contract);
-    }, [props.contract, jackpotData, time, prizeNumber]);
+        if (!props.contract.provider) { return; }
+        fetchGameInfo(props.contract);
+    }, [props.contract, gameInfo, gameId]);
+
+    useEffect((): void => {
+        async function fetchDeposits(contract: Contract): Promise<void> {
+            const amountTickets = parseInt(await contract.totalTickets());
+            let players = []
+            for(let i = 0; i < amountTickets; i++) {
+                const address = await contract.jackpotTickets(i);
+                players.push({option: address.substring(0,9)})
+            }
+            if (players.length != jackpotData.length) {setData(players)}
+        }
+        if (!props.contract.provider) { return; }
+        fetchDeposits(props.contract);
+    }, [props.contract, jackpotData]);
    
 
     const {
@@ -66,7 +77,7 @@ export const SpinWheel = (props) => {
         pause,
         resume,
         restart,
-      } = useTimer({ expiryTimestamp: time, autoStart: false, onExpire: () =>  setMustSpin(true)});
+      } = useTimer({ expiryTimestamp: time, autoStart: false});
       
     const [depositAmount, setDepositAmount] = useState(0.0);
     const handleChange = (event) => {
@@ -86,7 +97,7 @@ export const SpinWheel = (props) => {
     return (
         <div>
             <h3>game id: {gameId}</h3>
-            <h3>{prizeNumber} {props.chainInfo.activeChain?.nativeCurrency?.symbol}</h3>
+            <h3>{gameInfo.amount / 10e17} {props.chainInfo.activeChain?.nativeCurrency?.symbol}</h3>
             <div style={{fontSize: "2em"}}>
                 <span>{minutes}</span>:<span>{seconds}s</span>
             </div>
